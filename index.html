@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS3 Flex</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  </head>
+  <body ng-app="index" ng-controller="IndexCtrl">
+
+  <div class="list">
+    <header class="header">
+      <div class="wrap label">Label</div>
+      <div class="wrap options">Options</div>
+      <div class="wrap progress">Progress</div>
+      <div class="wrap date">Date</div>
+    </header>
+    <ul>
+      <li class="item" ng-repeat="x in values">
+        <div class="wrap label">{{x.label}}</div>
+        <div class="wrap options">
+          <select>
+            <option ng-repeat="opt in x.options">{{opt}}</option>
+          </select>
+        </div>
+        <div class="wrap progress">
+          <progress></progress>
+        </div>
+        <div class="wrap date">{{x.date}}</div>
+      </li>
+    </ul>
+  </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
