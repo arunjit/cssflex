@@ -165,10 +165,10 @@ $log:Kc,$parse:Oc,$route:Rc,$routeParams:Sc,$rootScope:Tc,$q:Pc,$sniffer:Uc,$tem
 angular.module('index', []).
 controller('IndexCtrl', function($scope) {
   $scope.values = [
-    {label: "Something", options: [1, 2, 3], progress: 20, date: '2013-04-01'},
-    {label: "Something", options: [2, 3, 4], progress: 50, date: '2013-04-02'},
-    {label: "Something", options: [3, 4, 5], progress: 10, date: '2013-04-03'},
-    {label: "Something", options: [4, 5, 6], progress: 90, date: '2013-04-05'}
+    {name: "Something", options: [1, 2, 3], progress: 20, date: '2013-04-01'},
+    {name: "Something", options: [2, 3, 4], progress: 50, date: '2013-04-02'},
+    {name: "Something", options: [3, 4, 5], progress: 10, date: '2013-04-03'},
+    {name: "Something", options: [4, 5, 6], progress: 90, date: '2013-04-05'}
   ];
 
   $scope.meanProgress = function() {

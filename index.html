@@ -12,8 +12,11 @@
              each item, both here in the header and then in each row. This
              has an added advantage of flexibility of the content: you can
              put nearly anything in the wrapper and style it independently. -->
-        <div class="item label">Label</div>
-        <div class="item options">Selected: {{selectionSize()}}</div>
+        <div class="item name">Name</div>
+        <div class="item options">
+          <span class="label">Selections</span>
+          <span class="sublabel">{{selectionSize()}} selected</span>
+        </div>
         <div class="item progress">
           <progress min="0" max="100" value="{{meanProgress()}}"></progress>
         </div>
@@ -25,9 +28,9 @@
                same style names; they can have additional, non-conflicting
                styles (like colors and fonts, but not positioning/sizing).
                Use `.item` for common styles, and the specific item type,
-               like `.label`, `.date`, etc., for their respective `flex:N`
+               like `.name`, `.date`, etc., for their respective `flex:N`
                size. -->
-          <div class="item label">{{x.label}}</div>
+          <div class="item name">{{x.name}}</div>
           <div class="item options">
             <select ng-model="x.selection">
               <option value="">Select...</option>
