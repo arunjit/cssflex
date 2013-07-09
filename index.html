@@ -3,32 +3,52 @@
   <head>
     <title>CSS3 Flex</title>
     <link rel="stylesheet" type="text/css" href="index.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
   </head>
   <body ng-app="index" ng-controller="IndexCtrl">
 
-  <div class="list">
-    <header class="header">
-      <div class="wrap label">Label</div>
-      <div class="wrap options">Options</div>
-      <div class="wrap progress">Progress</div>
-      <div class="wrap date">Date</div>
-    </header>
-    <ul>
-      <li class="item" ng-repeat="x in values">
-        <div class="wrap label">{{x.label}}</div>
-        <div class="wrap options">
-          <select>
-            <option ng-repeat="opt in x.options">{{opt}}</option>
-          </select>
+    <div class="container" ng-cloak>
+      <header class="header row">
+        <!-- Each element/text-node is wrapped by a div to maintain size of
+             each item, both here in the header and then in each row. This
+             has an added advantage of flexibility of the content: you can
+             put nearly anything in the wrapper and style it independently. -->
+        <div class="item label">Label</div>
+        <div class="item options">Selected: {{selectionSize()}}</div>
+        <div class="item progress">
+          <progress min="0" max="100" value="{{meanProgress()}}"></progress>
         </div>
-        <div class="wrap progress">
-          <progress></progress>
-        </div>
-        <div class="wrap date">{{x.date}}</div>
-      </li>
-    </ul>
-  </div>
+        <div class="item date">Date</div>
+      </header>
+      <ul>
+        <li class="row" ng-repeat="x in values">
+          <!-- The items of the header and each row must have at least the
+               same style names; they can have additional, non-conflicting
+               styles (like colors and fonts, but not positioning/sizing).
+               Use `.item` for common styles, and the specific item type,
+               like `.label`, `.date`, etc., for their respective `flex:N`
+               size. -->
+          <div class="item label">{{x.label}}</div>
+          <div class="item options">
+            <select ng-model="x.selection">
+              <option value="">Select...</option>
+              <option ng-repeat="opt in x.options" value="opt">{{opt}}</option>
+            </select>
+          </div>
+          <div class="item progress">
+            <progress min="0" max="100" value="{{x.progress}}"></progress>
+          </div>
+          <div class="item date">{{x.date}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <footer>
+      <span>Code links:</span>
+      <nav>
+        <a href="https://github.com/arunjit/cssflex/blob/master/index.html">HTML</a>
+        <a href="https://github.com/arunjit/cssflex/blob/master/index.css">CSS</a>
+      </nav>
+    </footer>
 
     <script src="index.js"></script>
   </body>

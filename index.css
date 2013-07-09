@@ -1,3 +1,7 @@
+[ng-cloak] {
+  display: none;
+}
+
 html, body {
   width: 100%; height: 100%;
   margin: 0; padding: 0;
@@ -10,57 +14,107 @@ ul, li {
   margin: 0; padding: 0;
 }
 
-div, select {
+div, select, progress {
   display: block;
   margin: 0; padding: 0;
 }
 
-.list {
+.container {
   color: #333;
   font-size: 15px;
-  padding: 10px;
+  padding: 20px;
 }
 
-.list .header,
-.list .item {
+/* THE ALL-IMPORTANT FLEX STYLING */
+.container .row {
+  /* flex */
   display: -webkit-flex;
+  /* main-axis flow (main-axis = item axis; row = horizontal [left-to-right]) */
   -webkit-flex-direction: row;
+  /* cross-axis alignment (cross-axis = perpendicular to main axis; vertical) */
   -webkit-align-items: center;
+
   height: 40px;
+  border: 1px solid #e5e5e5;
 }
 
-.list .header {
-  background-color: #90b0f0;
-  border: 1px solid transparent;
+.container .header {
+  background-color: #8bf;
   border-bottom: none;
   font-size: 13px;
   font-weight: bold;
   text-transform: uppercase;
 }
-.list .item {
-  border: 1px solid #e5e5e5;
+.container ul .row {
   border-top: none;
 }
 
-.list .label {
+.container .label {
+  -webkit-flex: 3;
+  margin-left: 10px;
+}
+.container .options {
   -webkit-flex: 3;
 }
-.list .options {
+.container .progress {
   -webkit-flex: 3;
 }
-.list .progress {
-  -webkit-flex: 3;
-}
-.list .date {
+.container .date {
   -webkit-flex: 1;
 }
 
-.list .header .wrap,
-.list .item .wrap {
+.container .header .item,
+.container .row .item {
   padding: 0 15px;
 }
 
-.list .options select,
-.list .progress progress {
+.container .options select,
+.container .progress progress {
   width: 100%;
+}
+
+
+/* extra pezazz */
+progress {
+  -webkit-appearance: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid #999;
+  height: 12px;
+  padding: 1px;
+}
+progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+progress::-webkit-progress-value {
+  background: -webkit-linear-gradient(-45deg,
+    transparent, transparent 33%,
+    rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%,
+    transparent 66%, transparent);
+  background-color: #4d90fe;
+  background-size: 20px 10px;
+  -webkit-animation: move 5s linear 0 infinite;
+}
+
+@-webkit-keyframes move {
+  0%   { background-position:      0 0, 0 0, 0 0; }
+  100% { background-position: -100px 0, 0 0, 0 0; }
+}
+
+footer {
+  display: -webkit-flex;
+  color: #777;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 27px;
+  padding: 20px;
+  text-transform: uppercase;
+}
+footer nav a,
+footer nav a:visited {
+  color: #444;
+  text-decoration: none;
+  margin-left: 8px;
+}
+footer nav a:hover {
+  text-decoration: underline;
 }
